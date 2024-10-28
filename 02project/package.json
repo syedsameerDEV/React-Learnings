@@ -4,7 +4,11 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+<<<<<<< HEAD
     "dev": "vite",
+=======
+    "syed": "vite",
+>>>>>>> 7e33fe6475ff313ccde2b0704aba070e58326d8f
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
