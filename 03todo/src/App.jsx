@@ -2,43 +2,46 @@ import { useState } from "react";
 import "./App.css";
 
 function App() {
-  const [todos, setTodos] = useState("");
-  const handelChange = (e) => {
-    setTodos(e.target.value);
-  };
-  // todo store the todo data and updadte
-  const [todoItems, setTodoItems] = useState([]);
-  const handelAdd = (e) => {
-    e.preventDefault();
-    setTodoItems([...todoItems, todos]);
-    setTodos("");
-  };
+  const [newTask, setNewTask] = useState("")
+  const handelChange = (e)=>{
+    setNewTask(e.target.value)
+  }
+  const [addTask, setAddTask] = useState([])
+  const handelAdd = (e)=>{
+    e.preventDefault()
+    setAddTask([...addTask, {id:addTask.length+1, task: newTask}])
+    setNewTask("")
+  }
+  const handelDelete = (index)=>{
+    let temp = addTask.filter((items)=>{
+      if(items.id == index){
+        return false
+      }
+      return true
+    })
+    setAddTask(temp)
+  }
   return (
     <>
-      <h1>Todo App</h1>
-      <form action="#" onSubmit={handelAdd}>
-        <section>
-          <input
-            type="text"
-            placeholder="Add some task here...!"
-            value={todos}
-            onChange={handelChange}
-            style={{ fontSize: "25px" }}
-          />
-          <button type="submit">Add</button>
-        </section>
+      <h1>Todo Task</h1>
+      <form action="#">
+        <input type="text" value={newTask} onChange={handelChange} placeholder="Add your daily tasks...!" />
+        <button onClick={handelAdd}>Add</button>
       </form>
-
-      <ul>
-        {todoItems.map((item, index) => {
-          return (
-            <li key={index}>
-              <span>{item}</span>
-              <button>delete</button>
-            </li>
-          );
-        })}
-      </ul>
+      <section>
+        <h2>Task List</h2>
+        <ul>
+          {
+            addTask.map((items)=>{
+              return(
+                <li key={items.id}><span>{items.task}</span> <button onClick={()=>{
+                  handelDelete(items.id)
+                }}>delete</button></li>
+              )
+            })
+          }
+        </ul>
+      </section>
     </>
   );
 }
