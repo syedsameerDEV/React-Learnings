@@ -15,7 +15,7 @@ const Counter = () => {
       <h1>Counter</h1>
       <div style={{display: "flex", justifyContent:"space-between",alignItems:"center", fontSize:"20px"}}>
         <button style={{padding:"10px"}} onClick={decrement}>-</button>
-        <h3>{number}</h3>
+        <h3>{ }</h3>
         <button style={{padding:"10px"}} onClick={increment}>+</button>
       </div>
     </div>

@@ -6,6 +6,11 @@ import Card from "./components/Card";
 import TodoContainer from "./components/TodoContainer";
 
 function App() {
+  const [count, setCount] = useState("0")
+  let a = 10;
+  let handelAdd = (prev)=>{
+    setCount(count+1)
+  }
   return (
     <div>
       <div className="bg-black p-16">
